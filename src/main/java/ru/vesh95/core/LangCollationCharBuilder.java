@@ -1,46 +1,68 @@
 package ru.vesh95.core;
 
+import jdk.dynalink.beans.StaticClass;
+
+import java.util.HashMap;
 import java.util.Map;
 
 import static java.util.Map.entry;
 
 public class LangCollationCharBuilder {
-    public static Map<String, Character> RU()
+    Map<String, Character> map = new HashMap<>();
+
+    public LangCollationCharBuilder()
     {
-        return Map.ofEntries(
-                entry(".-", 'А'),
-                entry("-...", 'Б'),
-                entry(".--", 'В'),
-                entry("--.", 'Г'),
-                entry("-..", 'Д'),
-                entry(".", 'Е'),
-                entry("...-", 'Ж'),
-                entry("--..", 'З'),
-                entry("..", 'И'),
-                entry(".---", 'Й'),
-                entry("-.-", 'К'),
-                entry(".-..", 'Л'),
-                entry("--", 'М'),
-                entry("-.", 'Н'),
-                entry("---", 'О'),
-                entry(".--.", 'П'),
-                entry(".-.", 'Р'),
-                entry("...", 'С'),
-                entry("-", 'Т'),
-                entry("..-", 'У'),
-                entry("..-.", 'Ф'),
-                entry("....", 'Х'),
-                entry("-.-.", 'Ц'),
-                entry("---.", 'Ч'),
-                entry("----", 'Ш'),
-                entry("--.-", 'Щ'),
-                entry(".--.-", 'Ъ'),
-                entry("-.--", 'Ы'),
-                entry("-..-", 'Ь'),
-                entry("..-..", 'Э'),
-                entry("..--", 'Ю'),
-                entry(".-.-", 'Я'),
-                entry(" ", ' ')
-        );
+        this.map.put(" ", ' ');
+        this.map.put("\n", '\n');
+    }
+
+    public LangCollationCharBuilder RU() {
+        this.map.put(".-", 'А');
+        this.map.put("-...", 'Б');
+        this.map.put(".--", 'В');
+        this.map.put("--.", 'Г');
+        this.map.put("-..", 'Д');
+        this.map.put(".", 'Е');
+        this.map.put("...-", 'Ж');
+        this.map.put("--..", 'З');
+        this.map.put("..", 'И');
+        this.map.put(".---", 'Й');
+        this.map.put("-.-", 'К');
+        this.map.put(".-..", 'Л');
+        this.map.put("--", 'М');
+        this.map.put("-.", 'Н');
+        this.map.put("---", 'О');
+        this.map.put(".--.", 'П');
+        this.map.put(".-.", 'Р');
+        this.map.put("...", 'С');
+        this.map.put("-", 'Т');
+        this.map.put("..-", 'У');
+        this.map.put("..-.", 'Ф');
+        this.map.put("....", 'Х');
+        this.map.put("-.-.", 'Ц');
+        this.map.put("---.", 'Ч');
+        this.map.put("----", 'Ш');
+        this.map.put("--.-", 'Щ');
+        this.map.put(".--.-", 'Ъ');
+        this.map.put("-.--", 'Ы');
+        this.map.put("-..-", 'Ь');
+        this.map.put("..-..", 'Э');
+        this.map.put("..--", 'Ю');
+        this.map.put(".-.-", 'Я');
+
+        return this;
+    }
+
+    @SuppressWarnings("unused")
+    public LangCollationCharBuilder set(String code, Character outChar)
+    {
+        this.map.put(code, outChar);
+
+        return this;
+    }
+
+    public Map<String, Character> build()
+    {
+        return this.map;
     }
 }
