@@ -10,7 +10,7 @@ public class TranslatorTest {
     {
         MorseCodeArticle article = new MorseCodeArticle(".--. .-. .. .-- . - .-.- -- ..-.. - -");
 
-        Translator translator = new Translator(LangCollationCharBuilder.RU());
+        Translator translator = new Translator(new LangCollationCharBuilder().RU().build());
 
         Assert.assertEquals("ПриветяМэтт".toUpperCase(), translator.translate(article));
     }

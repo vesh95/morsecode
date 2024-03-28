@@ -1,6 +1,5 @@
 package ru.vesh95.core;
 
-import java.util.Iterator;
 import java.util.Map;
 
 public class Translator {
