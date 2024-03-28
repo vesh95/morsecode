@@ -53,6 +53,7 @@ public class Main {
         try {
             fw = new FileWriter(outFileName);
             fw.write(translatedString);
+            fw.close();
         } catch (IOException e) {
             System.out.println("Ошибка записи");
 
