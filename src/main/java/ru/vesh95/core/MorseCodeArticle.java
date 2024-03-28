@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import java.util.regex.Pattern;
 
 public class MorseCodeArticle implements Iterable<String> {
+    private static final String ALLOWED_CHARS_PATTERN = "[^.\\- \\n]";
     private final String rawText;
     private final LinkedList<String> characters = new LinkedList<>();
 
@@ -58,7 +59,7 @@ public class MorseCodeArticle implements Iterable<String> {
      */
     private String validate(String rawText) {
 
-        if (Pattern.compile("[^.\\- ]").matcher(rawText).find()) {
+        if (Pattern.compile(ALLOWED_CHARS_PATTERN).matcher(rawText).find()) {
             throw new RuntimeException("Invalid character error");
         }
 
